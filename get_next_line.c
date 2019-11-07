@@ -6,12 +6,11 @@
 /*   By: ngontjar <ngontjar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 11:43:39 by ngontjar          #+#    #+#             */
-/*   Updated: 2019/11/07 15:27:56 by ngontjar         ###   ########.fr       */
+/*   Updated: 2019/11/07 15:49:15 by ngontjar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "libft.h"
 
 static int	buffer_to_line(char *file[], const int fd, char **out)
 {
@@ -51,7 +50,7 @@ int			get_next_line(const int fd, char **out)
 		if (file[fd] == NULL)
 			file[fd] = ft_strnew(0);
 		buffer[bytes] = '\0';
-		combined = ft_strjoin(file[fd], (bytes ? buffer : NULL));
+		combined = ft_strjoin(file[fd], buffer);
 		ft_strdel(&file[fd]);
 		file[fd] = combined;
 		if (ft_strchr(combined, '\n'))
